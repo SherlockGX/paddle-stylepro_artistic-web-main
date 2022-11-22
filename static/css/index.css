@@ -1,0 +1,107 @@
+body{
+    background: url(../images/mengnalisha.jpg) no-repeat fixed;
+    background-size: 100% 100%;
+}
+
+h4{
+    color: black;
+}
+
+
+.loading{
+    z-index: 9;
+    display: none;
+    position: fixed;
+    margin:auto;
+    top:0;
+    right:0;
+    bottom: 0;
+    left:0;
+    text-align:center;
+    width:40px;
+    height:40px;
+}
+
+.mainbox{
+    z-index: 0;
+    position: fixed;
+    width:1200px;
+    height:620px;
+    margin:auto;
+    top:0;
+    right:0;
+    bottom: 0;
+    left:0;
+    /*border:2px solid #a1a1a1;*/
+    border-radius:6px;
+    transition-duration: 0.9s;
+    -webkit-transition-duration: 0.9s;
+    overflow:hidden;
+    text-align: center;
+}
+
+.content_box{
+    z-index: 100;
+    position: absolute;
+    width:400px;
+    height:280px;
+    margin:auto;
+    top:20px;
+    left:50px;
+    /*background-color: #fff;*/
+    /*border:2px solid #a1a1a1;*/
+    border-radius:6px;
+    transition-duration: 0.9s;
+    -webkit-transition-duration: 0.9s;
+    overflow:hidden;
+    text-align: center;
+}
+
+.style_box{
+    z-index: 100;
+    position: absolute;
+    width:400px;
+    height:280px;
+    margin:auto;
+    bottom:20px;
+    left:50px;
+    /*background-color: #fff;*/
+    /*border:2px solid #a1a1a1;*/
+    border-radius:6px;
+    transition-duration: 0.9s;
+    -webkit-transition-duration: 0.9s;
+    overflow:hidden;
+    text-align: center;
+}
+
+.generated_box{
+    z-index: 100;
+    position: absolute;
+    width:400px;
+    height:280px;
+    margin:auto;
+    top:150px;
+    right:50px;
+    /*background-color: #fff;*/
+    /*border:2px solid #a1a1a1;*/
+    border-radius:6px;
+    transition-duration: 0.9s;
+    -webkit-transition-duration: 0.9s;
+    overflow:hidden;
+    text-align: center;
+    top: 0;
+    bottom: 0;
+}
+
+.content_box img, .style_box img, .generated_box img{
+    z-index: 50;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin:auto;
+    max-width: 400px;
+    max-height: 200px;
+    text-align: center;
+}

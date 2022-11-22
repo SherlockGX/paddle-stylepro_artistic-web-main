@@ -1,0 +1,107 @@
+<!--
+ * @Descripttion:
+ * @version:
+ * @Author:
+ * @Date:
+ * @LastEditTime:
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>风格迁移</title>
+    <link rel="stylesheet" href="../static/css/index.css">
+    <script src="../static/js/jQuery.js"></script>
+</head>
+
+<body>
+<form action="/upload" method="post" enctype="multipart/form-data">
+    <div class="mainbox">
+        <div id="content_box" class="content_box">
+            <h4>Origin</h4>
+            <img src="../{{ orgin }}" id="content_image" onerror="this.src='../static/img/error.jpg'">
+            <!-- <form action=" /origin" method="post" enctype="multipart/form-data" style="margin-top: 203px;"
+                position="relative;"> -->
+            <input type="file" name="content" id="origin" class="inputfile" accept="image/*"
+                   style="margin-top: 190px; background-color: transparent;"/>
+            <!-- <button type="submit">上传</button> -->
+            <!-- </form> -->
+        </div>
+
+        <div id="style_box" class="style_box">
+            <h4>Style</h4>
+            <img src="../{{ style }}" id="style_image" onerror="this.src='../static/img/error.jpg'">
+            <!-- <form action="/style" method="post" enctype="multipart/form-data" position="relative;"> -->
+            <input type="file" name="style" id="style" class="inputfile" accept="image/*"
+                   style="margin-top: 196px; background-color: transparent;"/>
+
+        </div>
+        <button type="submit" style="margin-top:280px; background-color: transparent;">上传</button>
+    </div>
+</form>
+<div id="generated_box" class="generated_box">
+    <h4>Result</h4>
+    <img src="../{{ result }}" id="generated_image" onerror="this.src='../static/img/error.jpg'">
+
+</div>
+
+
+<div class="loading" id="loading">
+    <div class="sk-bounce">
+        <div class="sk-bounce-dot"></div>
+        <div class="sk-bounce-dot"></div>
+    </div>
+</div>
+<script>
+    function downLoadImg(name, url) {
+        var image = new Image();
+        image.setAttribute('crossOrigin', 'anonymous');
+        image.onload = function () {
+            var canvas = document.createElement('canvas');
+            canvas.width = image.width;
+            canvas.height = image.height;
+            var ctx = canvas.getContext('2d');
+            ctx.drawImage(image, 0, 0, image.width, image.height);
+            var url = canvas.toDataURL('image/png');
+            var a = document.createElement('a');
+            a.download = name;
+            a.href = url;
+            a.click();
+        };
+        image.src = url;
+    }
+
+
+    $("#origin").change(function () {
+        var objUrl = getObjectURL(this.files[0]); //获取文件信息
+        console.log("objUrl = " + objUrl);
+        if (objUrl) {
+            $("#content_image").attr("src", objUrl);
+        }
+    });
+
+    $("#style").change(function () {
+        var objUrl = getObjectURL(this.files[0]); //获取文件信息
+        console.log("objUrl = " + objUrl);
+        if (objUrl) {
+            $("#style_image").attr("src", objUrl);
+        }
+    });
+
+    function getObjectURL(file) {
+        var url = null;
+        if (window.createObjectURL != undefined) {
+            url = window.createObjectURL(file);
+        } else if (window.URL != undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file);
+        } else if (window.webkitURL != undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file);
+        }
+        return url;
+    }
+</script>
+
+</body>
+
+</html>
